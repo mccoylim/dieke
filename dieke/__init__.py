@@ -597,7 +597,7 @@ def read_crosswhite(nf):
     """
 
     #dont actually use cross white files for Cerium
-    if nf==1:
+    if nf==1 or nf==13:
         LSterms = ['1 2F']
         numLS = 1
         Uk = np.zeros([3, numLS, numLS])
@@ -613,7 +613,7 @@ def read_crosswhite(nf):
         # the key will be the name eg "F2" or "ZETA"
         LSJlevels = ['1 2F  7/2', '1 2F  5/2']
         #values from mike's notes
-        fi_mat['ZETA']= np.array([[1.5, 0], [0, -2.0]])
+        fi_mat['ZETA']= (-1)**(nf % 13) * np.array([[-1.5, 0], [0, 2.0]])
         return (LSJlevels, fi_mat, LSterms, Uk, V)
 
         ########################
