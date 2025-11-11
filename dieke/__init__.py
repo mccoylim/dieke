@@ -542,12 +542,12 @@ def makeFullFreeIonOperators(nf, LSJlevels, fi_mat):
     for i in range(len(LSJlevels)):
         istart = multiplet_start[i]
         isize = multiplet_size[i]
-        istop = istart+isize
+        # istop = istart+isize
         for j in range(len(LSJlevels)):
             if isize != multiplet_size[j]:
                 continue
             jstart = multiplet_start[j]
-            jstop = jstart+isize
+            # jstop = jstart+isize
             for key in full_fi_mat.keys():
                 for d in range(isize):
                     full_fi_mat[key][istart + d, jstart + d] = fi_mat[key][i, j]
