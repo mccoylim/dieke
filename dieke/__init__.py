@@ -774,7 +774,7 @@ def read_crosswhite(nf):
         # fill in the other triangle
     for key in fi_mat.keys():
         olddiag = fi_mat[key].diagonal()
-        fi_mat[key] = fi_mat[key]+np.transpose(fi_mat[key])
+        fi_mat[key] = (fi_mat[key]+fi_mat[key].T).tolil()
         fi_mat[key].setdiag(olddiag)
     # Why 1000 indeed ...
     fi_mat['ALPHA'] = 1000*fi_mat['.01ALPH']
