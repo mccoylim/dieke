@@ -549,8 +549,8 @@ def makeFullFreeIonOperators(nf, LSJlevels, fi_mat):
             jstart = multiplet_start[j]
             jstop = jstart+isize
             for key in full_fi_mat.keys():
-                full_fi_mat[key][istart:istop, jstart:jstop] = \
-                                np.eye(isize)*fi_mat[key][i, j]
+                for d in range(isize):
+                    full_fi_mat[key][istart + d, jstart + d] = fi_mat[key][i, j]
     return (LSJmJstates, full_fi_mat)
 
 
